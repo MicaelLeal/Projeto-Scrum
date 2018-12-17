@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.softwareengineering.diminuto.R;
+import com.example.softwareengineering.diminuto.models.Instrumento;
 
 import java.util.List;
 
@@ -16,32 +17,44 @@ import java.util.List;
 public class MainRvAdapter extends RecyclerView.Adapter<MainRvAdapter.ViewHolder> {
 
     private Context context;
-//    private List<>
+    private List<Instrumento> instrumentos;
+
+    public MainRvAdapter(Context context, List<Instrumento> instrumentos) {
+        this.context = context;
+        this.instrumentos = instrumentos;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
-//        return new ViewHolder(LayoutInflater.from(context)
-//                .inflate(R.layout.todo, parent, false));
+        return new ViewHolder(LayoutInflater.from(context)
+                .inflate(R.layout.item_rv_main, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.txtNome.setText(instrumentos.get(position).getNome());
+        holder.txtDesc.setText(instrumentos.get(position).getDescricacao());
+        holder.txtValor.setText(String.valueOf(instrumentos.get(position).getValor()));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return instrumentos.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         protected TextView txtNome;
+        protected TextView txtDesc;
+        protected TextView txtValor;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
+            txtNome = itemView.findViewById(R.id.txt_item_rv_main_nome);
+            txtDesc = itemView.findViewById(R.id.txt_item_rv_main_descricao);
+            txtValor = itemView.findViewById(R.id.txt_item_rv_main_valor);
         }
     }
 
