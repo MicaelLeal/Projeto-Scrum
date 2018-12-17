@@ -17,6 +17,8 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +29,13 @@ public class MainActivity extends AppCompatActivity
 
         drawerSetup(toolbar);
         ViewsSetup();
+        reloadMain();
 
     }
 
     private void ViewsSetup() {
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,22 +97,23 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_main) {
+            reloadMain();
+        } else if (id == R.id.nav_meus_instrumentos) {
+            fab.setVisibility(View.VISIBLE);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_instrumentos_alugados) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_sair) {
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void reloadMain(){
+        fab.setVisibility(View.GONE);
     }
 }
