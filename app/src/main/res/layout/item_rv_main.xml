@@ -3,17 +3,22 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="126dp"
     android:layout_margin="4dp"
     card_view:cardBackgroundColor="#FFF"
     card_view:cardCornerRadius="2dp"
-    card_view:cardElevation="2dp">
+    card_view:cardElevation="4dp">
 
     <LinearLayout
-        android:layout_margin="4dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/img_background" />
 
 
         <LinearLayout
